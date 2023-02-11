@@ -11,7 +11,6 @@ function error404(){
                 <p>
                     Oops, sorry we can't find this page.
                 </p>
-                {/* <img src="..\..\pics\404.gif"></img> */}
             </main>
         </Def>
     )
