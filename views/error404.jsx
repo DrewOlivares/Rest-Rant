@@ -9,8 +9,11 @@ function error404(){
                     404: Page Not Found
                 </h1>
                 <p>
-                    Oops, sorry we can't find this page.
+                    Oops, sorry we can't find this page. Here's a cute kitten for your troubles.
                 </p>
+                <div>
+                    <img src='https://placekitten.com/200/300' alt='kitten'/>
+                </div>
             </main>
         </Def>
     )
