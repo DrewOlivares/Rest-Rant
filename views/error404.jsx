@@ -1,5 +1,5 @@
-const React = require('react')
-const Def = require('./default')
+const React = require('react');
+const Def = require('./default');
 
 function error404(){
     return(
@@ -16,7 +16,7 @@ function error404(){
                 </div>
             </main>
         </Def>
-    )
-}
+    );
+};
 
-module.exports = error404
+module.exports = error404;

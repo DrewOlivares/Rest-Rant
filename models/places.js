@@ -12,4 +12,4 @@ module.exports = [{
     cuisines: 'Coffee, Bakery',
     pic: '/images/restaurant2.jpg',
     food: '/images/food2.jpg',
-}]
+}];
