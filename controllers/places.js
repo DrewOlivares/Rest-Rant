@@ -64,22 +64,8 @@ router.put('/:id', (req, res) => {
       // Save the new data into places[id]
       places[id] = req.body;
       res.redirect(`/places/${id}`);
-  }
-})
-
-// Edit form
-router.get('/:id/edit', (req, res) => {
-  let id = Number(req.params.id);
-  if (isNaN(id)) {
-      res.render('error404');
-  }
-  else if (!places[id]) {
-      res.render('error404');
-  }
-  else {
-    res.render('places/edit', {place: places[id]});
-  }
-})
+  };
+});
 
 // Posting/creating
 router.post('/', (req, res) => {
@@ -95,6 +81,20 @@ router.post('/', (req, res) => {
   }
   places.push(req.body);
   res.redirect('/places');
-})
+});
+
+// Edit form
+router.get('/:id/edit', (req, res) => {
+  let id = Number(req.params.id);
+  if (isNaN(id)) {
+      res.render('error404');
+  }
+  else if (!places[id]) {
+      res.render('error404');
+  }
+  else {
+    res.render('places/edit', {place: places[id], id});
+  };
+});
 
 module.exports = router;
