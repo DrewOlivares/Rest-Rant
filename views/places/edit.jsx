@@ -24,9 +24,13 @@ function edit_form (data){
                     <label htmlFor="state">State</label>
                     <input className="form-control" id="state" name="state" value={data.place.state}/>
                 </div>
-                <div className="form-group">
+                <div className="form-group col-sm-6">
                     <label htmlFor="cuisines">Cuisines</label>
                     <input className="form-control" id="cuisines" name="cuisines" value={data.place.cuisines}required />
+                </div>
+                <div className="form-group col-sm-6">
+                    <label htmlFor="food">Picture of Food</label>
+                    <input className="form-control" id="food" name="food" value={data.place.food} />
                 </div>
                 </div>
                 <input className="btn btn-primary" type="submit" value="Add Place"/>
