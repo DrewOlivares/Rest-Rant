@@ -9,18 +9,12 @@ function show (data) {
                     <h1>
                         { data.place.name }
                     </h1>
-                    <a href={`/places/${data.place.id}/edit`} className="btn btn-warning"> 
-                        Edit
-                    </a>     
-                    <form method="POST" action={`/places/${data.place.id}?_method=DELETE`}> 
-                        <button type="submit" className="btn btn-danger">
-                            Delete
-                        </button>
-                    </form>     
+                    <h3>
+                        Located in {data.place.city}, {data.place.state}
+                    </h3>
                     <img src={data.place.food}/>
                 </div>
                 <div className='row'>
-
                     <h2>
                         Ratings
                     </h2>
@@ -31,7 +25,10 @@ function show (data) {
                         Description
                     </h2>
                     <p>
-                        Located in {data.place.city}, {data.place.state}. Serving {data.place.cuisines}.                    
+                        {data.place.showEstablished()}
+                    </p>
+                    <p>
+                        Serving {data.place.cuisines}
                     </p>
                     <h2>
                         Comments
@@ -40,6 +37,14 @@ function show (data) {
                         No comments yet
                     </p>
                 </div>
+                <a href={`/places/${data.place.id}/edit`} className="btn btn-warning"> 
+                        Edit
+                </a>     
+                <form method="POST" action={`/places/${data.place.id}?_method=DELETE`}> 
+                    <button type="submit" className="btn btn-danger">
+                        Delete
+                    </button>
+                </form>
 
             </main>
         </Def>
