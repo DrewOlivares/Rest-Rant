@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
 
 const placeSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  pic: String,
-  cuisines: { type: String, required: true },
-  city: { type: String, default: 'Anytown' },
-  state: { type: String, default: 'USA' },
-  food: {type: String},
-  founded: Number
+  name: { type: String, required: true},
+  pic: {type: String, default:'/images/default-restaurant.jpg'},
+  cuisines: { type: String, required: true},
+  city: { type: String, default: 'Anytown'},
+  state: { type: String, default: 'USA'},
+  food: {type: String, default: '/images/default-food.jpg'},
+  founded: {type: Number, 
+    min: [1673, "Who did you serve? Dinosaurs?!"],
+    max: [new Date().getFullYear(), "Are you from the future?!"]}
 });
 
 placeSchema.methods.showEstablished = function() {

@@ -34,7 +34,7 @@ function edit_form (data){
                 </div>
                 <div className="form-group">
                   <label for="founded">Founded Year</label>
-                  <input className="form-control" id="founded" name="founded" />
+                  <input type="number" className="form-control" id="founded" name="founded" value={new Date().getFullYear()} />
                 </div>      
             </div>
                 <input className="btn btn-primary" type="submit" value="Add Place"/>
