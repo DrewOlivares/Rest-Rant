@@ -1,5 +1,5 @@
-const router = require('express').Router();
-const db = require('../models');
+const router = require('express').Router()
+const db = require('../models')
 
 // Index
 router.get('/', (req, res) => {
@@ -8,13 +8,23 @@ router.get('/', (req, res) => {
       res.render('places/index', {places})
     })
     .catch(err => {
-      console.log('err', err);
+      console.log('err', err)
       res.render('error404')
     })
 });
 
 // New 
 router.post('/', (req, res) => {
+  if (!req.body.pic) {
+    // Default image if one is not provided
+    req.body.pic = 'http://placekitten.com/400/400';
+  }
+  if (!req.body.city) {
+    req.body.city = 'Anytown';
+  }
+  if (!req.body.state) {
+    req.body.state = 'USA';
+  }
   db.Place.create(req.body)
   .then(() => {
     res.redirect('/places')
@@ -24,6 +34,7 @@ router.post('/', (req, res) => {
     res.render('error404')
   })
 });
+
 
 router.get('/new', (req, res) => {
   res.render('places/new')
@@ -48,7 +59,11 @@ router.put('/:id', (req, res) => {
 
 // Delete
 router.delete('/:id', (req, res) => {
-  res.send('DELETE /places/:id stub')
+  db.Place.findByIdAndDelete(req.params.id)
+  .then(deletedPlace =>{
+    res.status(303).redirect('/places')
+  })
+  
 });
 
 // Edit Page
