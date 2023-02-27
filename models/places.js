@@ -1,22 +1,26 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const placeSchema = new mongoose.Schema({
-  name: { type: String, required: true},
-  pic: {type: String, default:'/images/default-restaurant.jpg'},
-  cuisines: { type: String, required: true},
-  city: { type: String, default: 'Anytown'},
-  state: { type: String, default: 'USA'},
+  name: { type: String, required: true },
+  pic: { type: String, default: '/images/default-restaurant.jpg'},
+  cuisines: { type: String, required: true },
+  city: { type: String, default: 'Anytown' },
+  state: { type: String, default: 'USA' },
   food: {type: String, default: '/images/default-food.jpg'},
-  founded: {type: Number, 
+  founded: {
+    type: Number,
     min: [1673, "Who did you serve? Dinosaurs?!"],
-    max: [new Date().getFullYear(), "Are you from the future?!"]}
-});
+    max: [new Date().getFullYear(), "Are you from the future?!"]
+  },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
+})
+
 
 placeSchema.methods.showEstablished = function() {
   return `${this.name} has been serving ${this.city} since ${this.founded}.`
 }
 
-module.exports = mongoose.model('Place', placeSchema);
+module.exports = mongoose.model('Place', placeSchema)
 
 
 /* module.exports = [{
