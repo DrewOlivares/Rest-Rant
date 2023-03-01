@@ -77,7 +77,7 @@ router.delete('/:id', (req, res) => {
   })
 });
 
-// Edit Page
+// Edit 
 router.get('/:id/edit', (req, res) => {
   db.Place.findById(req.params.id)
   .then(place => {
@@ -90,13 +90,13 @@ router.get('/:id/edit', (req, res) => {
 
 // Comment
 router.post('/:id/comment', (req, res) => {
-  console.log(req.body),
-  req.body.rant = req.body.rant ? true : false,
+  console.log(req.body)
+  req.body.rant = req.body.rant ? true : false
   db.Place.findById(req.params.id)
   .then(place => {
       db.Comment.create(req.body)
       .then(comment => {
-          place.comments.push(comment.id),
+          place.comments.push(comment.id)
           place.save()
           .then(() => {
               res.redirect(`/places/${req.params.id}`)

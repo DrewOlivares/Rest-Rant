@@ -7,11 +7,16 @@ function show (data) {
             No comments yet!
         </h3>
     )
+     let rating = (
+        <h3 className="inactive">
+            No ratings yet!
+        </h3>
+     )
     if (data.place.comments.length) {
         comments = data.place.comments.map(c => {
             return (
               <div className="border">
-                <h2 className="rant">{c.rant ? 'Rant! ðŸ˜¡' : 'Rave! ðŸ˜»'}</h2>
+                <h2 className="rant">{c.rant ? 'Rant! >:(' : 'Rave! :)'}</h2>
                 <h4>{c.content}</h4>
                 <h3>
                   <stong>- {c.author}</stong>
@@ -42,7 +47,7 @@ function show (data) {
                             Ratings
                         </h2>
                         <p>
-                            No ratings yet
+                            {rating}
                         </p>
                         <h2>
                             Description
@@ -63,7 +68,7 @@ function show (data) {
                     </div>
                 </div>
                     <hr/>
-                    <a href={`/places/${data.place.id}/edit`} className="btn btn-warning"> 
+                    <a href={`/places/${data.place._id}/edit`} className="btn btn-warning"> 
                         Edit
                     </a>     
                     <form method="POST" action={`/places/${data.place._id}?_method=DELETE`}> 
@@ -74,7 +79,7 @@ function show (data) {
                     <h2>
                         Create your own Rant!: 
                     </h2>
-                    <form method="POST" action= {`/places/${data.place.id}/comment`}>
+                    <form method="POST" action= {`/places/${data.place._id}/comment`}>
                     <div className="row">
                         <div className="form-group col-sm-12">
                             <label htmlFor="content">Content</label>
@@ -85,8 +90,8 @@ function show (data) {
                             <input className="form-control" id="author" name="author" />
                         </div>
                         <div className="form-group col-sm-4">
-                            <label htmlFor="star rating">Star Rating</label>
-                            <input className="form-control" type="range" step="0.5" min="1" max="5" id="star rating" name="star rating" />
+                            <label htmlFor="stars">Star Rating</label>
+                            <input className="form-control" type="range" step="0.5" min="1" max="5" id="stars" name="stars" />
                         </div>
                         <div className="col-sm-2" >
                             <label htmlFor="rant">Rant?</label>
