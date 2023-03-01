@@ -7,11 +7,6 @@ function show (data) {
             No comments yet!
         </h3>
     )
-     let rating = (
-        <h3 className="inactive">
-            No ratings yet!
-        </h3>
-     )
     if (data.place.comments.length) {
         comments = data.place.comments.map(c => {
             return (
@@ -25,6 +20,22 @@ function show (data) {
               </div>
             )
         })
+    }
+     let rating = (
+        <h3 className="inactive">
+            No ratings yet!
+        </h3>
+     )
+    if (data.place.comments.length){
+        let sumRatings = data.place.comments.reduce((tot, c) => {
+            return tot + c.stars
+        }, 0)
+        let averageRating = sumRatings / data.place.comments.length
+        rating = (
+            <p>
+                <strong>Average of {Math.round(averageRating)} stars</strong>
+            </p>
+        )
     }
     return (
         <Def>
