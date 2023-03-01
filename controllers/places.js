@@ -75,6 +75,10 @@ router.delete('/:id', (req, res) => {
   .then(deletedPlace =>{
     res.status(303).redirect('/places')
   })
+  .catch(err => {
+    console.log('err', err)
+    res.render('error404')
+  })
 });
 
 // Edit 
