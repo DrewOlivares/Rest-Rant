@@ -1,5 +1,5 @@
-const router = require('express').Router()
-const db = require('../models')
+const router = require('express').Router();
+const db = require('../models');
 
 // Index
 router.get('/', (req, res) => {
@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
           res.render('error404')
       }
   })
-})
+});
 
 // New
 router.get('/new', (req, res) => {
@@ -90,7 +90,7 @@ router.get('/:id/edit', (req, res) => {
   .catch(err => {
       res.render('error404')
   })
-})
+});
 
 // Comment
 router.post('/:id/comment', (req, res) => {
@@ -111,7 +111,7 @@ router.post('/:id/comment', (req, res) => {
   .catch(err => {
       res.render('error404')
   })
-})
+});
 
 // Delete comment
 router.delete('/:id/comment/:commentId', (req, res) => {
@@ -124,9 +124,9 @@ router.delete('/:id/comment/:commentId', (req, res) => {
       console.log('err', err)
       res.render('error404')
   })
-})
+});
 
-module.exports = router
+module.exports = router;
 
 /* // Index
 router.get('/', (req, res) => {

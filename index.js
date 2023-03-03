@@ -1,8 +1,10 @@
 //Modules
-const express = require('express')
-const app = express()
-require('dotenv').config()
-const methodOverride = require('method-override')
+const express = require('express');
+const app = express();
+require('dotenv').config();
+const methodOverride = require('method-override');
+const PORT = process.env.PORT;
+
 
 //Express
 app.set('views', __dirname + '/views');
@@ -17,12 +19,14 @@ app.use(methodOverride('_method'));
 app.use('/places', require('./controllers/places'));
 
 app.get('/', (req, res) => {
-    res.render('home');
-})
+    res.render('home')
+});
 
 app.get('*', (req, res) => {
-    res.status(404).render('error404');
-})
+    res.status(404).render('error404')
+});
 
 // Listen
-app.listen(process.env.PORT);
+app.listen(PORT);
+
+module.exports = app;

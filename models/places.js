@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const placeSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -13,14 +13,14 @@ const placeSchema = new mongoose.Schema({
     max: [new Date().getFullYear(), "Are you from the future?!"]
   },
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
-})
+});
 
 
 placeSchema.methods.showEstablished = function() {
   return `${this.name} has been serving ${this.city} since ${this.founded}.`
-}
+};
 
-module.exports = mongoose.model('Place', placeSchema)
+module.exports = mongoose.model('Place', placeSchema);
 
 
 /* module.exports = [{

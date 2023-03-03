@@ -24,4 +24,4 @@ db.Place.create([{
 .catch(err => {
     console.log('Failure!', err),
     process.exit()
-})
+});

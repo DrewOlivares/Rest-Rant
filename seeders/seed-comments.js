@@ -1,4 +1,4 @@
-const db = require('../models')
+const db = require('../models');
 
 // To use await, we need an async function.
 async function seed() {
@@ -21,6 +21,6 @@ async function seed() {
     
     // Exit the program
     process.exit()
-}
+};
 
-seed()
+seed();

@@ -8,9 +8,9 @@ function show (data) {
         </h3>
     )
     if (data.place.comments.length) {
-        comments = data.place.comments.map(c => {
+        comments = data.place.comments.map((c, index) => {
             return (
-              <div className="border">
+              <div key={index} className="border">
                 <h2 className="rant">
                     {c.rant ? 'Rant! 😑' : 'Rave! 😻'}
                 </h2>
@@ -128,8 +128,8 @@ function show (data) {
             </main>
         </Def>
     )
-}
+};
 
-module.exports = show
+module.exports = show;
 
 
