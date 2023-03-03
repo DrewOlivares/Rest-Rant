@@ -12,7 +12,7 @@ function show (data) {
             return (
               <div className="border">
                 <h2 className="rant">
-                    {c.rant ? 'Rant! >:(' : 'Rave! :)'}
+                    {c.rant ? 'Rant! 😑' : 'Rave! 😻'}
                 </h2>
                 <h4>
                     {c.content}

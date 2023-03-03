@@ -39,6 +39,7 @@ router.post('/', (req, res) => {
   })
 })
 
+// New
 router.get('/new', (req, res) => {
   res.render('places/new')
 });
@@ -48,7 +49,6 @@ router.get('/:id', (req, res) => {
   db.Place.findById(req.params.id)
     .populate('comments')
       .then(place => {
-        console.log(place.comments)
         res.render('places/show', { place })
       })
         .catch(err => {
@@ -102,9 +102,7 @@ router.post('/:id/comment', (req, res) => {
       .then(comment => {
           place.comments.push(comment.id)
           place.save()
-          .then(() => {
-              res.redirect(`/places/${req.params.id}`)
-          })
+          res.redirect(`/places/${req.params.id}`)
       })
       .catch(err => {
           res.render('error404')
@@ -115,6 +113,7 @@ router.post('/:id/comment', (req, res) => {
   })
 })
 
+// Delete comment
 router.delete('/:id/comment/:commentId', (req, res) => {
   db.Comment.findByIdAndDelete(req.params.commentId)
   .then(() => {
